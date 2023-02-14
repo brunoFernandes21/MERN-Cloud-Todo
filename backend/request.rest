@@ -18,14 +18,14 @@ Content-type: application/json
 
 ###
 
-DELETE http://localhost:5000/api/projects/62626
+DELETE http://localhost:5000/api/projects/63ebbd8e6b6aa2eda7828138
+
 ###
 
-PATCH http://localhost:5000/api/projects/262662
+PATCH http://localhost:5000/api/projects/63eaaa02da631d684c925de3
 Content-type: application/json
 
 {
-    "title": "Shoulder Press",
-    "load": 10,
-    "reps": 50
+    "person": "Steven",
+    "due": "2023-04-12"
 }

@@ -10,18 +10,17 @@ const getProjects = async (request, response) => {
         .sort({createdAt: -1})
         response.status(200).json(workouts)
     } catch (error) {
-        response.status(400).json({error: error.message})
+        response.status(400 ).json({error: error.message})
     }    
 }
 //GET a single project
 const getProject = async (request, response) => {
     // get id from route params
     const { id } = request.params
-    //check if route param id is a valid id 
+    //check if route param id is a valid mongodb id 
     if(ObjectId.isValid(id)) {
         //if so, find doc with corresponding id
         const project = await Project.findById(id)
-
         //check if a doc with this id exists
         if(!project) {
             return response.status(400).json({mssg: "No such project"})
@@ -29,10 +28,9 @@ const getProject = async (request, response) => {
         //if such doc exists, send it to client
         response.status(200).json(project)
     } else {
-        response.status(400).json({mssg: "Unable to get project"})
+        response.status(404).json({mssg: "Unable to get project"})
     }
-    //check if the id from route params is a valid
-    //Mongodb id
+   
     
 }
 //POST a new project
@@ -46,16 +44,54 @@ const createProject = async (request, response) => {
         })
         response.status(200).json(project)
     } catch (error) {
-        response.status(400).json({error: error.message})
+        response.status(404).json({error: error.message})
     }
     
 }
 //DELETE a single project
-
+const deleteProject = async (request, response) => {
+    // get id from route params
+    const { id } = request.params
+    //check if param id is a valid mongodb id
+    if(ObjectId.isValid(id)) {
+        //if so, find doc with corresponding id
+        const deletedProject = await Project.findByIdAndDelete(id)
+        //check if a doc with this id exists
+        if(!deletedProject) {
+            return response.status(400).json({mssg: "No such project"})
+        }
+        //if such doc exists, send it to client
+        response.status(200).json(deletedProject)
+    } else {
+        response.status(404).json({mssg: "Unable to get project"})
+    }
+}
 //GET all projects
+const updateProject = async (request, response) => {
+    // get id from route params
+    const { id } = request.params
+    //check if route param id is a valid mongodb id 
+    if(ObjectId.isValid(id)) {
+        //if so, find doc with corresponding id
+        const updatedProject = await Project.findByIdAndUpdate(id, {
+            //updated request body from client
+            ...request.body
+        })
+        //check if a doc with this id exists
+        if(!updatedProject) {
+            return response.status(400).json({mssg: "No such project"})
+        }
+        //if such doc exists, send it to client
+        response.status(200).json(updatedProject)
+    } else {
+        response.status(404).json({mssg: "Unable to get project"})
+    }
+}
 
 module.exports = {
     getProjects,
     createProject,
-    getProject
+    getProject,
+    deleteProject,
+    updateProject
 }

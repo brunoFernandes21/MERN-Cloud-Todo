@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const {
-    getProjects, getProject, createProject
+    getProjects, getProject, createProject, deleteProject,
+    updateProject
 } = require('../controllers/projectContoller')
 //GET all projects
 router.get('/', getProjects)
@@ -13,14 +14,10 @@ router.get('/:id', getProject)
 router.post('/', createProject)
 
 //DELETE a single project
-router.delete('/:id', (request, response) => {
-    response.status(200).json({mssg: 'Delete a single project'})
-})
+router.delete('/:id', deleteProject)
 
 //GET all projects
-router.patch('/:id', (request, response) => {
-    response.status(200).json({mssg: 'Update a single project'})
-})
+router.patch('/:id', updateProject)
 
 //export router
 module.exports = router
