@@ -1,0 +1,31 @@
+GET http://localhost:5000/api/projects
+
+###
+
+GET http://localhost:5000/api/projects/63eaa8876b4e39a21a8c7c1b
+
+###
+
+POST http://localhost:5000/api/projects
+Content-type: application/json
+
+{
+    "title": "New Navbar",
+    "person": "Becky",
+    "due": "2023-05-10",
+    "status": "ongoing"
+}
+
+###
+
+DELETE http://localhost:5000/api/projects/63ebbd8e6b6aa2eda7828138
+
+###
+
+PATCH http://localhost:5000/api/projects/63eaaa02da631d684c925de3
+Content-type: application/json
+
+{
+    "person": "Steven",
+    "due": "2023-04-12"
+}
