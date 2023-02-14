@@ -10,22 +10,24 @@ POST http://localhost:5000/api/projects
 Content-type: application/json
 
 {
-    "title": "New Navbar",
-    "person": "Becky",
+    "title": "Responsive Design",
+    "person": "Liana",
     "due": "2023-05-10",
     "status": "ongoing"
 }
 
 ###
 
-DELETE http://localhost:5000/api/projects/63ebbd8e6b6aa2eda7828138
+DELETE http://localhost:5000/api/projects/63eaaa02da631d684c925de3
 
 ###
 
-PATCH http://localhost:5000/api/projects/63eaaa02da631d684c925de3
+PATCH http://localhost:5000/api/projects/63ebc488ba6e761a9582ed77
 Content-type: application/json
 
 {
-    "person": "Steven",
-    "due": "2023-04-12"
+    "title": "lelele lululu",
+    "person": "Christopher",
+    "due": "2023-03-23",
+    "status": "ongoing"    
 }
