@@ -9,6 +9,7 @@ const Dashboard = () => {
   
   const { projects, setProjects} = useContext(ProjectContext);
   const [ isLoading, setIsLoading ] = useState(false)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -22,10 +23,28 @@ const Dashboard = () => {
     fetchProjects()
   }, [])
 
+  //delete single project
+  const deleteProject = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:8000/api/projects/${id}`, {
+        method: 'DELETE'
+      })
+      if(response.ok) {
+        const filteredProjects = projects.filter((project) => {
+          return project._id !== id
+        })
+        setProjects(filteredProjects)
+        console.log(`Project with id: ${id} has been deleted`)
+      }
+    } catch (error) {
+      setError(error.message)
+    }
+  }
   const allProjects = projects.map((project) => (
     <Project 
     key={project._id}
     project={project}
+    onDelete={deleteProject}
     />
   ) )
   

@@ -299,7 +299,19 @@ body {
 .chip.overdue {
   background: tomato;
 }
-
+/* delete button style */
+.delete {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  top: 5px;
+  right: 0;
+  cursor: pointer;
+  padding: 6px;
+  background: #f5dfdf;
+  border-radius: 50%;
+}
 /* Css section for new project form */
 .error {
   border: 2px solid rgb(185 28 28);
