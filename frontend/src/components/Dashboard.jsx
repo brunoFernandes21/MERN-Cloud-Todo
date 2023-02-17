@@ -1,15 +1,19 @@
 import Container from "@mui/material/Container";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Project from "./Project";
+
+//context api
+import { ProjectContext } from '../context/ProjectContext'
 
 const Dashboard = () => {
   
-  const [ projects, setProjects] = useState([]);
-  const [ isLoading, setIsLoading ] = useState(true)
+  const { projects, setProjects} = useContext(ProjectContext);
+  const [ isLoading, setIsLoading ] = useState(false)
 
   useEffect(() => {
     const fetchProjects = async () => {
-      const response = await fetch('http://localhost:8000/projects')
+      setIsLoading(true)
+      const response = await fetch('http://localhost:8000/api/projects')
       const data = await response.json()
       // console.log(data)
       setIsLoading(false)
@@ -20,27 +24,22 @@ const Dashboard = () => {
 
   const allProjects = projects.map((project) => (
     <Project 
-    key={project.id}
-    title={project.title}
-    person={project.person}
-    date={project.date}
-    status={project.status}
+    key={project._id}
+    project={project}
     />
   ) )
   
-  if(isLoading) {
-    return <h1>Loading...</h1>
-  } else {
-    return (
-      <div>
-        <h2 className="font-bold text-lg">Dashboard</h2>
-        <Container className="container">
-          { allProjects }
-        </Container>
-      </div>
-    );
-  }
-  
+  // console.log(allProjects)
+
+  return (
+    <div>
+      <h2 className="font-bold text-lg">Dashboard</h2>
+      <Container className="container">
+        {!isLoading && allProjects }
+        {isLoading && <h1>Loading...</h1>}
+      </Container>
+    </div>
+  );  
 };
 
 export default Dashboard;

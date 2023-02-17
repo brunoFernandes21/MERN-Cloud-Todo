@@ -8,9 +8,11 @@ const mongoose = require('mongoose')
 mongoose.set('strictQuery', false)
 //create express app 
 const app = express()
+const cors = require('cors')
 //middleware
 //allows us to send post body to server in post request
 app.use(express.json())
+app.use(cors())
 //this allows us to do something between each request.
 // in this case, we console.log() between each request
 app.use((request, response, next) => {

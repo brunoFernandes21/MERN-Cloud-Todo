@@ -12,6 +12,13 @@
   --navHeadline: #fffffe;
   --navTextHover: #b8c1ec;
 }
+@font-face {
+  font-family: 'SEGA LOGO FONT';
+  font-style: normal;
+  font-weight: normal;
+  src: local('SEGA LOGO FONT'), url('SEGA.woff') format('woff');
+}
+
 * {
   box-sizing: border-box;
 }
@@ -35,6 +42,7 @@ body {
   transition: 0.6s;
   z-index: 100000;
   background-color: #042331;
+  border-bottom: 3px solid #fff;
 }
 
 /* .bars {
@@ -77,6 +85,11 @@ body {
 }
 .title:hover {
   color: var(--navTextHover);
+}
+.navbar .title {
+  font-family: 'SEGA LOGO FONT';
+  font-weight: 500;
+  color: rgb(255, 255, 255);
 }
 .navbar > .links {
   display: flex;
@@ -123,7 +136,7 @@ body {
 
 }
 /* mobile navbar  */
-@media (max-width: 858px) {
+@media (max-width: 900px) {
   .mobile__icon{
     display: block;
   }
@@ -257,7 +270,10 @@ body {
 .container {
   margin: 60px 0px;
 }
-
+/* card shadow  */
+.card {
+  box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.2);
+}
 /* stying cards based on status */
 .complete {
   border-left: 6px solid #3cd1c2;
@@ -285,6 +301,9 @@ body {
 }
 
 /* Css section for new project form */
+.error {
+  border: 2px solid rgb(185 28 28);
+}
 .new__project {
   max-width: 400px;
   margin: 0 auto;
@@ -293,7 +312,7 @@ body {
   box-shadow: 0px 0px 4px 4px rgba(0,0,0,0.2);
   transition: all 0.3s ease-in-out;
   /* background-color: #ffffff; */
-  border: 1px solid #ffffff;
+  border: 3px solid #fff;
   border-radius: 5px;
 }
 .new__project:hover {
@@ -339,6 +358,6 @@ button {
   padding: 15px;
   font-weight: 900;
   font-size: 15px;
-  border-radius: 50px;
+  border-radius: 5px;
   cursor: pointer;
 }

@@ -15,6 +15,7 @@ const getProjects = async (request, response) => {
 const getProject = async (request, response) => {
   // get id from route params
   const { id } = request.params;
+
   try {
     //check if route param id is a valid mongodb id
     if (ObjectId.isValid(id)) {
@@ -37,6 +38,25 @@ const getProject = async (request, response) => {
 const createProject = async (request, response) => {
   //get request body
   const { title, person, due, status } = request.body;
+  //input validation
+  let emptyFields = []
+
+  if(!title){
+    emptyFields.push('title')
+  }
+  if(!person) {
+    emptyFields.push('person')
+  }
+  if(!due) {
+    emptyFields.push('due')
+  }
+  if(!status) {
+    emptyFields.push('status')
+  }
+    //send error message if theres empty fields and exit function
+  if(emptyFields.length > 0){
+    return response.status(400).json({error: "Please fill in all the fields", emptyFields})
+  }
 
   try {
     const project = await Project.create({

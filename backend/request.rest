@@ -1,12 +1,12 @@
-GET http://localhost:5000/api/projects
+GET http://localhost:8000/api/projects
 
 ###
 
-GET http://localhost:5000/api/projects/63eaa8876b4e39a21a8c7c1b
+GET http://localhost:8000/api/projects/63eaa8876b4e39a21a8c7c1b
 
 ###
 
-POST http://localhost:5000/api/projects
+POST http://localhost:8000/api/projects
 Content-type: application/json
 
 {
@@ -18,11 +18,11 @@ Content-type: application/json
 
 ###
 
-DELETE http://localhost:5000/api/projects/63eaaa02da631d684c925de3
+DELETE http://localhost:8000/api/projects/63eaaa02da631d684c925de3
 
 ###
 
-PATCH http://localhost:5000/api/projects/63ebc488ba6e761a9582ed77
+PATCH http://localhost:8000/api/projects/63ebc488ba6e761a9582ed77
 Content-type: application/json
 
 {

@@ -52,7 +52,7 @@ const Navbar = () => {
       {/* <div className="bars">
         <FaBars className="nav__icon"/>
       </div> */}
-      <Link to="/" className="title">CloudTodo</Link>
+      <Link to="/" className="title">Cloud_Todo</Link>
       <div className="links">
         <NavLink onClick={toggleMobileNav} className="link" to="/">
           <MdDashboard className="link__icon"/> 

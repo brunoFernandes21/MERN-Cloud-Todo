@@ -5,12 +5,15 @@ import {ScrollToTop } from './components/ScrollToTop'
 
 import App from './App'
 import './index.css'
+import { ProjectsProvider } from './context/ProjectContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Router>
-      <ScrollToTop />
-      <App />
-    </Router>
+    <ProjectsProvider>
+      <Router>
+        <ScrollToTop />
+        <App />
+      </Router>
+    </ProjectsProvider>
   </React.StrictMode>,
 )
