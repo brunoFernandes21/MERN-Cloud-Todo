@@ -39,7 +39,7 @@ const NewProject = () => {
     });
     //store response in data variable
     const data = await response.json();
-
+    
     if (!response.ok) {
       setError(data.error);
       setEmptyFields(data.emptyFields)
@@ -48,14 +48,14 @@ const NewProject = () => {
     if(response.ok) {
       setError(null)
       setIsLoading(false);
-      setEmptyFields([])
       setProjects([data, ...projects])
+      setEmptyFields([])
       navigate('/')
       setFormData({ title: "", person: "", due: "", status: "" });
     }
 
   };
-
+  console.log(emptyFields)
   return (
     <div className="new__project">
       {error && (
